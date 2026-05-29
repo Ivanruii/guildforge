@@ -1,0 +1,43 @@
+{
+  "name": "discord-manager-mcp",
+  "version": "1.0.0",
+  "description": "MCP Server to manage Discord channels, categories, roles and permissions",
+  "type": "module",
+  "main": "dist/index.js",
+  "scripts": {
+    "typecheck": "tsc --noEmit",
+    "build": "tsdown src/index.ts --format esm --out-dir dist",
+    "dev": "tsdown src/index.ts --format esm --out-dir dist --watch",
+    "start": "node dist/index.mjs",
+    "lint": "biome check .",
+    "format": "biome format --write .",
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "inspect": "npm run build && npx @modelcontextprotocol/inspector node dist/index.mjs"
+  },
+  "keywords": [
+    "mcp",
+    "discord",
+    "bot",
+    "manager"
+  ],
+  "author": "",
+  "license": "MIT",
+  "dependencies": {
+    "@modelcontextprotocol/sdk": "^1.0.0",
+    "discord.js": "^14.16.0",
+    "dotenv": "^16.4.0",
+    "zod": "^3.23.0"
+  },
+  "devDependencies": {
+    "@biomejs/biome": "1.9.4",
+    "@modelcontextprotocol/inspector": "^0.21.2",
+    "@types/node": "^20.14.0",
+    "tsdown": "^0.22.1",
+    "typescript": "^5.5.0",
+    "vitest": "^2.0.0"
+  },
+  "engines": {
+    "node": ">=24.0.0"
+  }
+}
