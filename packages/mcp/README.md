@@ -1,4 +1,4 @@
-# Discord Manager MCP
+# GuildForge
 
 A Model Context Protocol (MCP) server that allows AI assistants to manage Discord servers through a standard interface.
 
@@ -87,9 +87,9 @@ Add this to your Claude Desktop config (`%APPDATA%\Claude\claude_desktop_config.
 ```json
 {
   "mcpServers": {
-    "discord-manager": {
+    "guildforge": {
       "command": "node",
-      "args": ["path/to/discord-manager-mcp/dist/index.mjs"],
+      "args": ["path/to/guildforge/dist/index.mjs"],
       "env": {
         "DISCORD_TOKEN": "your_bot_token",
         "GUILD_ID": "your_guild_id"
@@ -187,7 +187,7 @@ LLM (Claude, Cursor, etc.)
 MCP Protocol (stdio)
     |
     v
-discord-manager-mcp (this server)
+guildforge (this server)
     |
     v
 discord.js Client

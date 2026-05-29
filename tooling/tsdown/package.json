@@ -1,5 +1,5 @@
 {
-	"name": "@discord-manager/tsdown-config",
+	"name": "@guildforge/tsdown-config",
 	"private": true,
 	"version": "0.0.0",
 	"type": "module",

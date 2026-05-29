@@ -1,5 +1,5 @@
 {
-	"name": "@discord-manager/mcp",
+	"name": "@guildforge/mcp",
 	"version": "1.0.0",
 	"description": "MCP Server to manage Discord channels, categories, roles and permissions",
 	"type": "module",
@@ -17,7 +17,7 @@
 		"dist"
 	],
 	"bin": {
-		"discord-manager-mcp": "./dist/index.mjs"
+		"guildforge": "./dist/index.mjs"
 	},
 	"scripts": {
 		"build": "tsdown",
@@ -37,7 +37,7 @@
 	"license": "MIT",
 	"repository": {
 		"type": "git",
-		"url": "https://github.com/discord-manager/discord-manager-mcp.git",
+		"url": "https://github.com/guildforge/guildforge.git",
 		"directory": "packages/mcp"
 	},
 	"dependencies": {
@@ -47,9 +47,9 @@
 		"zod": "^4.4.3"
 	},
 	"devDependencies": {
-		"@discord-manager/tsdown-config": "workspace:*",
-		"@discord-manager/typescript-config": "workspace:*",
-		"@discord-manager/vitest-config": "workspace:*",
+		"@guildforge/tsdown-config": "workspace:*",
+		"@guildforge/typescript-config": "workspace:*",
+		"@guildforge/vitest-config": "workspace:*",
 		"@types/node": "^25.9.1",
 		"tsdown": "^0.22.1",
 		"typescript": "^6.0.3",

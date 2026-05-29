@@ -1,4 +1,4 @@
-import { baseTsdownConfig } from '@discord-manager/tsdown-config/base';
+import { baseTsdownConfig } from '@guildforge/tsdown-config/base';
 
 export default {
 	...baseTsdownConfig,

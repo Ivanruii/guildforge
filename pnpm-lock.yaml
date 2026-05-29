@@ -54,13 +54,13 @@ importers:
         specifier: ^4.4.3
         version: 4.4.3
     devDependencies:
-      '@discord-manager/tsdown-config':
+      '@guildforge/tsdown-config':
         specifier: workspace:*
         version: link:../../tooling/tsdown
-      '@discord-manager/typescript-config':
+      '@guildforge/typescript-config':
         specifier: workspace:*
         version: link:../../tooling/typescript
-      '@discord-manager/vitest-config':
+      '@guildforge/vitest-config':
         specifier: workspace:*
         version: link:../../tooling/vitest
       '@types/node':

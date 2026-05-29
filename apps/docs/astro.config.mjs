@@ -6,13 +6,13 @@ import { defineConfig } from 'astro/config';
 export default defineConfig({
 	integrations: [
 		starlight({
-			title: 'Discord Manager MCP',
+			title: 'GuildForge',
 
 			social: [
 				{
 					icon: 'github',
 					label: 'GitHub',
-					href: 'https://github.com/discord-manager/discord-manager-mcp',
+					href: 'https://github.com/guildforge/guildforge',
 				},
 			],
 			sidebar: [
