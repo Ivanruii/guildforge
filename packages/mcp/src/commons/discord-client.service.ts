@@ -1,5 +1,5 @@
-import { Client, GatewayIntentBits, PermissionsBitField } from 'discord.js';
 import type { Guild } from 'discord.js';
+import { Client, GatewayIntentBits, PermissionsBitField } from 'discord.js';
 
 export interface DiscordClientService {
 	connect(): Promise<void>;

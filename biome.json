@@ -1,20 +1,22 @@
 {
-	"$schema": "https://biomejs.dev/schemas/1.9.4/schema.json",
-	"organizeImports": {
-		"enabled": true
-	},
+	"$schema": "https://biomejs.dev/schemas/2.4.16/schema.json",
+	"assist": { "actions": { "source": { "organizeImports": "on" } } },
 	"files": {
-		"include": [
-			"packages/*/src/**/*.ts",
-			"packages/*/*.ts",
-			"tooling/**/*.ts",
-			"apps/**/*.ts",
-			"apps/**/*.mjs",
-			"apps/**/*.json",
-			"*.ts",
-			"*.json"
-		],
-		"ignore": [".turbo", ".astro", "node_modules", "dist", "coverage"]
+		"includes": [
+			"**/packages/**/*/src/**/*.ts",
+			"**/packages/**/*/*.ts",
+			"**/tooling/**/*.ts",
+			"**/apps/**/*.ts",
+			"**/apps/**/*.mjs",
+			"**/apps/**/*.json",
+			"**/*.ts",
+			"**/*.json",
+			"!**/.turbo",
+			"!**/.astro",
+			"!**/node_modules",
+			"!**/dist",
+			"!**/coverage"
+		]
 	},
 	"formatter": {
 		"enabled": true,

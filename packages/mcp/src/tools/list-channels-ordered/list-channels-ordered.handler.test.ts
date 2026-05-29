@@ -1,4 +1,4 @@
-import { describe, expect, it, vi } from 'vitest';
+import { describe, expect, it } from 'vitest';
 import type { DiscordClientService } from '#/commons/discord-client.service';
 import { listChannelsOrderedHandler } from './list-channels-ordered.handler';
 
