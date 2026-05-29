@@ -28,6 +28,11 @@
 	"keywords": ["mcp", "discord", "bot", "manager"],
 	"author": "",
 	"license": "MIT",
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/discord-manager/discord-manager-mcp.git",
+		"directory": "packages/mcp"
+	},
 	"dependencies": {
 		"@modelcontextprotocol/sdk": "^1.0.0",
 		"discord.js": "^14.16.0",

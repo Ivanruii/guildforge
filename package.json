@@ -16,6 +16,7 @@
 		"lint": "biome check .",
 		"format": "biome format --write .",
 		"inspect": "pnpm turbo build && pnpm dlx @modelcontextprotocol/inspector node packages/mcp/dist/index.mjs",
+		"changeset": "changeset",
 		"prepare": "husky || echo 'No need to install husky'"
 	},
 	"lint-staged": {
@@ -29,6 +30,7 @@
 		"@modelcontextprotocol/inspector": "^0.21.2",
 		"husky": "^9.1.7",
 		"lint-staged": "^17.0.5",
-		"turbo": "^2.9.6"
+		"turbo": "^2.9.6",
+		"@changesets/cli": "^2.29.2"
 	}
 }
