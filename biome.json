@@ -4,7 +4,13 @@
 		"enabled": true
 	},
 	"files": {
-		"include": ["src/**/*.ts", "tests/**/*.ts", "*.ts"]
+		"include": [
+			"packages/*/src/**/*.ts",
+			"packages/*/*.ts",
+			"tooling/**/*.ts",
+			"*.ts",
+			"*.json"
+		]
 	},
 	"formatter": {
 		"enabled": true,

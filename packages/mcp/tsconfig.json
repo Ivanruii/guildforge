@@ -1,0 +1,11 @@
+{
+	"extends": "@discord-manager/typescript-config/node",
+	"include": ["src"],
+	"compilerOptions": {
+		"rootDir": "src",
+		"lib": ["ES2024"],
+		"paths": {
+			"#*": ["./src/*"]
+		}
+	}
+}

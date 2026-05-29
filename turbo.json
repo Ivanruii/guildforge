@@ -1,0 +1,31 @@
+{
+	"$schema": "https://turbo.build/schema.json",
+	"tasks": {
+		"topo": {
+			"dependsOn": ["^topo"]
+		},
+		"build": {
+			"dependsOn": ["^build"],
+			"outputs": ["dist/**"]
+		},
+		"dev": {
+			"cache": false,
+			"persistent": true
+		},
+		"typecheck": {
+			"dependsOn": ["topo"]
+		},
+		"test": {
+			"dependsOn": ["topo"]
+		},
+		"test:watch": {
+			"cache": false,
+			"persistent": true,
+			"dependsOn": ["topo"]
+		},
+		"test:coverage": {
+			"dependsOn": ["topo"],
+			"outputs": ["coverage/**"]
+		}
+	}
+}

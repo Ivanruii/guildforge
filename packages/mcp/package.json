@@ -1,0 +1,49 @@
+{
+	"name": "@discord-manager/mcp",
+	"version": "1.0.0",
+	"description": "MCP Server to manage Discord channels, categories, roles and permissions",
+	"type": "module",
+	"exports": {
+		".": {
+			"types": "./dist/index.d.mts",
+			"default": "./dist/index.mjs"
+		},
+		"./package.json": "./package.json"
+	},
+	"imports": {
+		"#*": "./src/*"
+	},
+	"files": ["dist"],
+	"bin": {
+		"discord-manager-mcp": "./dist/index.mjs"
+	},
+	"scripts": {
+		"build": "tsdown",
+		"typecheck": "tsc --noEmit",
+		"test": "vitest run",
+		"test:watch": "vitest",
+		"test:coverage": "vitest run --coverage",
+		"inspect": "npm run build && npx @modelcontextprotocol/inspector node dist/index.mjs"
+	},
+	"keywords": ["mcp", "discord", "bot", "manager"],
+	"author": "",
+	"license": "MIT",
+	"dependencies": {
+		"@modelcontextprotocol/sdk": "^1.0.0",
+		"discord.js": "^14.16.0",
+		"dotenv": "^16.4.0",
+		"zod": "^3.23.0"
+	},
+	"devDependencies": {
+		"@discord-manager/tsdown-config": "*",
+		"@discord-manager/typescript-config": "*",
+		"@discord-manager/vitest-config": "*",
+		"@types/node": "^20.14.0",
+		"tsdown": "^0.22.1",
+		"typescript": "^5.5.0",
+		"vitest": "^2.0.0"
+	},
+	"engines": {
+		"node": ">=24.0.0"
+	}
+}
