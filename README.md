@@ -2,21 +2,6 @@
 
 A Model Context Protocol (MCP) server that lets AI assistants manage Discord channels, categories, roles, and permissions via stdio.
 
-## Install
-
-```bash
-npx -y @guildforge/mcp
-```
-
-Then set your environment variables:
-
-```bash
-DISCORD_TOKEN=your_bot_token
-GUILD_ID=your_guild_id
-```
-
-That's it. No clone, no build, no pnpm.
-
 ## Configure your AI client
 
 ### opencode
