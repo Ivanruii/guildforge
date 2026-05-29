@@ -5,12 +5,136 @@ title: Getting Started
 ## Prerequisites
 
 - Node.js >= 24
-- pnpm >= 10
 - A Discord bot token with the required intents and permissions
 
-## Installation
+## Install from npm
 
-Clone the repository and install dependencies:
+The package is published on npm and can be installed directly with `npx`:
+
+```bash
+npx -y @guildforge/mcp
+```
+
+This downloads and runs the latest published version. You only need to provide your environment variables.
+
+### Configuration
+
+Create a `.env` file or set environment variables:
+
+```bash
+DISCORD_TOKEN=your_bot_token
+GUILD_ID=your_guild_id
+```
+
+## MCP Client Configuration
+
+GuildForge works with any MCP-compatible client. Find your client below and follow the example.
+
+### opencode
+
+Add to your `opencode.jsonc`:
+
+```jsonc
+{
+    "$schema": "https://opencode.ai/config.json",
+    "mcp": {
+        "guildforge": {
+            "type": "local",
+            "command": ["npx", "-y", "@guildforge/mcp"],
+            "environment": {
+                "DISCORD_TOKEN": "your_bot_token",
+                "GUILD_ID": "your_guild_id"
+            }
+        }
+    }
+}
+```
+
+### Cursor
+
+Add to your `.cursor/mcp.json` (create the file if it doesn't exist):
+
+```json
+{
+    "mcpServers": {
+        "guildforge": {
+            "command": "npx",
+            "args": ["-y", "@guildforge/mcp"],
+            "env": {
+                "DISCORD_TOKEN": "your_bot_token",
+                "GUILD_ID": "your_guild_id"
+            }
+        }
+    }
+}
+```
+
+### GitHub Copilot
+
+Add to your `.vscode/settings.json` or the workspace settings:
+
+```json
+{
+    "github.copilot.mcpServers": {
+        "guildforge": {
+            "command": "npx",
+            "args": ["-y", "@guildforge/mcp"],
+            "env": {
+                "DISCORD_TOKEN": "your_bot_token",
+                "GUILD_ID": "your_guild_id"
+            }
+        }
+    }
+}
+```
+
+### Claude Desktop
+
+Add to your `claude_desktop_config.json`. Find it at:
+- **macOS/Linux:** `~/Library/Application Support/Claude/claude_desktop_config.json`
+- **Windows:** `%APPDATA%\Claude\claude_desktop_config.json`
+
+```json
+{
+    "mcpServers": {
+        "guildforge": {
+            "command": "npx",
+            "args": ["-y", "@guildforge/mcp"],
+            "env": {
+                "DISCORD_TOKEN": "your_bot_token",
+                "GUILD_ID": "your_guild_id"
+            }
+        }
+    }
+}
+```
+
+### Zed
+
+Add to your `.zed/settings.json`:
+
+```json
+{
+    "assistant": {
+        "mcpServers": {
+            "guildforge": {
+                "command": "npx",
+                "args": ["-y", "@guildforge/mcp"],
+                "env": {
+                    "DISCORD_TOKEN": "your_bot_token",
+                    "GUILD_ID": "your_guild_id"
+                }
+            }
+        }
+    }
+}
+```
+
+## Local development
+
+If you want to contribute or run the server from source:
+
+### Install dependencies
 
 ```bash
 git clone https://github.com/guildforge/guildforge.git
@@ -18,9 +142,7 @@ cd guildforge
 pnpm install
 ```
 
-## Build
-
-Compile the MCP server:
+### Build
 
 ```bash
 pnpm turbo build
@@ -28,18 +150,16 @@ pnpm turbo build
 
 The compiled output is available at `packages/mcp/dist/index.mjs`.
 
-## Running the server
-
-The server communicates via stdio (standard input/output) following the MCP protocol.
+### Run
 
 ```bash
 node packages/mcp/dist/index.mjs
 ```
 
-For local development and inspection, use the built-in inspector script:
+For interactive inspection during development:
 
 ```bash
 pnpm inspect
 ```
 
-This will build the project and launch the MCP Inspector for interactive testing.
+This builds the project and launches the MCP Inspector.
