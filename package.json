@@ -13,7 +13,8 @@
     "format": "biome format --write .",
     "test": "vitest run",
     "test:watch": "vitest",
-    "inspect": "npm run build && npx @modelcontextprotocol/inspector node dist/index.mjs"
+    "inspect": "npm run build && npx @modelcontextprotocol/inspector node dist/index.mjs",
+    "prepare": "husky"
   },
   "keywords": [
     "mcp",
@@ -33,9 +34,17 @@
     "@biomejs/biome": "1.9.4",
     "@modelcontextprotocol/inspector": "^0.21.2",
     "@types/node": "^20.14.0",
+    "husky": "^9.1.7",
+    "lint-staged": "^17.0.5",
     "tsdown": "^0.22.1",
     "typescript": "^5.5.0",
     "vitest": "^2.0.0"
+  },
+  "lint-staged": {
+    "*.{js,ts,json}" : [
+      "biome check --write --no-errors-on-unmatched",
+      "biome format --write --no-errors-on-unmatched"
+    ]
   },
   "engines": {
     "node": ">=24.0.0"
