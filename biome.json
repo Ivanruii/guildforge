@@ -10,7 +10,8 @@
 			"tooling/**/*.ts",
 			"*.ts",
 			"*.json"
-		]
+		],
+		"ignore": [".turbo", "node_modules", "dist", "coverage"]
 	},
 	"formatter": {
 		"enabled": true,

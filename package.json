@@ -2,12 +2,11 @@
 	"name": "@discord-manager/monorepo",
 	"private": true,
 	"type": "module",
-	"packageManager": "npm@11.9.0",
+	"packageManager": "pnpm@10.10.0",
 	"engines": {
 		"node": ">=24",
-		"npm": ">=11"
+		"pnpm": ">=10"
 	},
-	"workspaces": ["packages/*", "tooling/*"],
 	"scripts": {
 		"build": "turbo build",
 		"test": "turbo test",
@@ -16,8 +15,8 @@
 		"typecheck": "turbo typecheck",
 		"lint": "biome check .",
 		"format": "biome format --write .",
-		"inspect": "npm run build --workspace=packages/mcp && npx @modelcontextprotocol/inspector node packages/mcp/dist/index.mjs",
-		"prepare": "husky || \"No need to install husky\""
+		"inspect": "pnpm turbo build && pnpm dlx @modelcontextprotocol/inspector node packages/mcp/dist/index.mjs",
+		"prepare": "husky || echo 'No need to install husky'"
 	},
 	"lint-staged": {
 		"*.{js,ts,json}": [
