@@ -11,8 +11,10 @@ import { deleteCategory } from './tools/delete-category';
 import { deleteChannel } from './tools/delete-channel';
 import { deleteRole } from './tools/delete-role';
 import { listChannels } from './tools/list-channels';
+import { listChannelsOrdered } from './tools/list-channels-ordered';
 import { listRoles } from './tools/list-roles';
 import { ping } from './tools/ping';
+import { reorderChannels } from './tools/reorder-channels';
 import { setCategoryPermissions } from './tools/set-category-permissions';
 import { setChannelPermissions } from './tools/set-channel-permissions';
 
@@ -131,6 +133,21 @@ server.registerTool(
 		inputSchema: setCategoryPermissions.schema,
 	},
 	(args) => setCategoryPermissions.execute(args, discordService),
+);
+
+server.registerTool(
+	listChannelsOrdered.name,
+	{ description: listChannelsOrdered.description },
+	() => listChannelsOrdered.execute(discordService),
+);
+
+server.registerTool(
+	reorderChannels.name,
+	{
+		description: reorderChannels.description,
+		inputSchema: reorderChannels.schema,
+	},
+	(args) => reorderChannels.execute(args, discordService),
 );
 
 async function main() {
