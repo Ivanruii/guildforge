@@ -1,0 +1,45 @@
+---
+title: Getting Started
+---
+
+## Prerequisites
+
+- Node.js >= 24
+- pnpm >= 10
+- A Discord bot token with the required intents and permissions
+
+## Installation
+
+Clone the repository and install dependencies:
+
+```bash
+git clone https://github.com/discord-manager/discord-manager-mcp.git
+cd discord-manager-mcp
+pnpm install
+```
+
+## Build
+
+Compile the MCP server:
+
+```bash
+pnpm turbo build
+```
+
+The compiled output is available at `packages/mcp/dist/index.mjs`.
+
+## Running the server
+
+The server communicates via stdio (standard input/output) following the MCP protocol.
+
+```bash
+node packages/mcp/dist/index.mjs
+```
+
+For local development and inspection, use the built-in inspector script:
+
+```bash
+pnpm inspect
+```
+
+This will build the project and launch the MCP Inspector for interactive testing.

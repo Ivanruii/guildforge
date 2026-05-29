@@ -8,10 +8,13 @@
 			"packages/*/src/**/*.ts",
 			"packages/*/*.ts",
 			"tooling/**/*.ts",
+			"apps/**/*.ts",
+			"apps/**/*.mjs",
+			"apps/**/*.json",
 			"*.ts",
 			"*.json"
 		],
-		"ignore": [".turbo", "node_modules", "dist", "coverage"]
+		"ignore": [".turbo", ".astro", "node_modules", "dist", "coverage"]
 	},
 	"formatter": {
 		"enabled": true,

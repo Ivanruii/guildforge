@@ -1,0 +1,34 @@
+---
+title: Discord Manager MCP
+description: MCP Server to manage Discord channels, categories, roles and permissions.
+tableOfContents: false
+hero:
+  tagline: MCP Server to manage Discord channels, categories, roles and permissions.
+  actions:
+    - text: Getting Started
+      link: /getting-started/
+      icon: right-arrow
+    - text: View on GitHub
+      link: https://github.com/discord-manager/discord-manager-mcp
+      icon: external
+      variant: minimal
+---
+
+import { Card, CardGrid } from '@astrojs/starlight/components';
+
+## Features
+
+<CardGrid stagger>
+	<Card title="Channel Management" icon="document">
+		Create, list, reorder and delete text and voice channels.
+	</Card>
+	<Card title="Category Management" icon="open-book">
+		Organize channels into categories with full CRUD support.
+	</Card>
+	<Card title="Role Management" icon="setting">
+		Create, delete, list and assign roles to guild members.
+	</Card>
+	<Card title="Permissions" icon="approve-check">
+		Set granular channel and category permissions using named permission flags.
+	</Card>
+</CardGrid>

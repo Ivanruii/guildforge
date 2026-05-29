@@ -1,0 +1,87 @@
+---
+title: Contributing
+description: Development guide for the Discord Manager MCP monorepo.
+---
+
+## Monorepo Structure
+
+```
+discord-manager-mcp/
+├── apps/
+│   └── docs/              # Astro + Starlight documentation site
+├── packages/
+│   └── mcp/               # MCP server package (@discord-manager/mcp)
+├── tooling/
+│   ├── typescript/        # Shared TypeScript configs
+│   ├── tsdown/            # Shared tsdown config
+│   └── vitest/            # Shared vitest config
+```
+
+## Scripts
+
+Run from the repository root:
+
+| Command | Description |
+|---------|-------------|
+| `pnpm install` | Install all workspace dependencies |
+| `pnpm turbo build` | Build all packages |
+| `pnpm turbo test` | Run all tests |
+| `pnpm turbo typecheck` | Type-check all packages |
+| `pnpm lint` | Run Biome lint across the monorepo |
+| `pnpm format` | Format all files with Biome |
+| `pnpm inspect` | Build MCP and launch the inspector |
+
+## MCP Package Development
+
+The MCP server lives in `packages/mcp`. It follows a tool-based architecture where each tool is a directory containing:
+
+- `{name}.tool.ts` — Tool registration and metadata
+- `{name}.handler.ts` — Business logic implementation
+- `{name}.schema.ts` — Zod validation schema (if arguments are required)
+- `index.ts` — Public export barrel
+- `{name}.handler.test.ts` — Colocated unit tests
+
+## Testing
+
+Tests use Vitest with mocked Discord.js dependencies. Run tests for a specific package:
+
+```bash
+cd packages/mcp
+pnpm test
+```
+
+Or run all tests from root:
+
+```bash
+pnpm turbo test
+```
+
+## Linting
+
+Biome is configured at the monorepo root. It checks all `*.ts` and `*.json` files under `packages/`, `tooling/`, `apps/` and the root directory.
+
+```bash
+pnpm lint
+pnpm format
+```
+
+## Documentation
+
+The documentation site is an Astro + Starlight app located in `apps/docs`.
+
+### Development
+
+```bash
+cd apps/docs
+pnpm dev
+```
+
+The site will be available at `http://localhost:4321` by default.
+
+### Build
+
+```bash
+pnpm turbo build
+```
+
+Static output is generated to `apps/docs/dist/`.

@@ -1,0 +1,49 @@
+---
+title: Permissions
+description: Permission names accepted by the permission tools.
+---
+
+Both `set_channel_permissions` and `set_category_permissions` accept permission names as strings. The names are mapped internally to Discord.js `PermissionsBitField.Flags`.
+
+## Available Permission Names
+
+The following permission names can be used in the `allow` and `deny` arrays:
+
+- `ViewChannel`
+- `ManageChannels`
+- `ManageRoles`
+- `CreateInstantInvite`
+- `SendMessages`
+- `SendMessagesInThreads`
+- `CreatePublicThreads`
+- `CreatePrivateThreads`
+- `EmbedLinks`
+- `AttachFiles`
+- `AddReactions`
+- `UseExternalEmojis`
+- `UseExternalStickers`
+- `MentionEveryone`
+- `ManageMessages`
+- `ManageThreads`
+- `ReadMessageHistory`
+- `SendTTSMessages`
+- `UseApplicationCommands`
+- `RequestToSpeak`
+- `ManageEvents`
+- `ManageWebhooks`
+- `PrioritySpeaker`
+- `Stream`
+- `Connect`
+- `Speak`
+- `MuteMembers`
+- `DeafenMembers`
+- `MoveMembers`
+- `UseVoiceActivity`
+- `ChangeNickname`
+- `ManageNicknames`
+
+## Notes
+
+- Permission names are case-sensitive and must match exactly.
+- If a permission is not listed in either `allow` or `deny`, it inherits the default behavior.
+- The bot itself must have `ManageChannels` and `ManageRoles` in the target guild.

@@ -1,0 +1,94 @@
+---
+title: Available Tools
+description: Complete reference of all MCP tools exposed by the Discord Manager server.
+---
+
+The Discord Manager MCP exposes the following tools for AI assistants to manage a Discord guild.
+
+## Channel Tools
+
+### `list_channels`
+
+Returns all channels in the guild with their type, position and parent category.
+
+### `list_channels_ordered`
+
+Returns channels organized hierarchically: categories first, then their child channels sorted by position.
+
+### `create_text_channel`
+
+Creates a new text channel. Parameters:
+- `name` (string, required)
+- `categoryId` (string, optional) — parent category ID
+
+### `create_voice_channel`
+
+Creates a new voice channel. Parameters:
+- `name` (string, required)
+- `categoryId` (string, optional) — parent category ID
+
+### `delete_channel`
+
+Deletes a channel by ID. Requires `confirm: true`.
+
+### `reorder_channels`
+
+Reorders channels and moves them between categories. Accepts a batch of operations:
+- `channelId` (string, required)
+- `newPosition` (number, required)
+- `newCategoryId` (string, optional)
+
+## Category Tools
+
+### `create_category`
+
+Creates a new channel category. Parameters:
+- `name` (string, required)
+
+### `delete_category`
+
+Deletes a category by ID. Requires `confirm: true`.
+
+## Role Tools
+
+### `list_roles`
+
+Returns all roles in the guild with their ID, name, color and position.
+
+### `create_role`
+
+Creates a new role. Parameters:
+- `name` (string, required)
+- `color` (string, optional) — hex color (e.g. `#FF0000`)
+
+### `delete_role`
+
+Deletes a role by ID. Requires `confirm: true`.
+
+### `assign_role`
+
+Assigns or removes a role from a user. Parameters:
+- `userId` (string, required)
+- `roleId` (string, required)
+- `action` (enum: `add` | `remove`, required)
+
+## Permission Tools
+
+### `set_channel_permissions`
+
+Sets permission overwrites for a role or user on a specific channel. Parameters:
+- `channelId` (string, required)
+- `targetId` (string, required) — role or user ID
+- `targetType` (enum: `role` | `user`, required)
+- `allow` (string[], optional) — permission names to allow
+- `deny` (string[], optional) — permission names to deny
+
+### `set_category_permissions`
+
+Same as `set_channel_permissions` but for a category. The category must be of type `GuildCategory`.
+
+## Ping Tool
+
+### `ping`
+
+A simple health-check tool that returns `pong`. Useful for verifying the server is responsive.

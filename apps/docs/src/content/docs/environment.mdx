@@ -1,0 +1,30 @@
+---
+title: Environment Setup
+---
+
+## Required Variables
+
+Create a `.env` file in the root of the project or set these environment variables before running the server:
+
+| Variable | Description |
+|----------|-------------|
+| `DISCORD_TOKEN` | Your Discord bot token |
+| `GUILD_ID` | The ID of the Discord guild (server) to manage |
+
+## Discord Bot Configuration
+
+1. Go to the [Discord Developer Portal](https://discord.com/developers/applications)
+2. Create a new application or select an existing one
+3. Navigate to the **Bot** section
+4. Enable the following intents:
+   - `Guilds`
+   - `GuildMembers`
+5. Copy the bot token and use it as `DISCORD_TOKEN`
+6. Invite the bot to your server with the following permissions:
+   - `Manage Channels`
+   - `Manage Roles`
+7. Copy your server ID (enable Developer Mode in Discord settings to see it) and use it as `GUILD_ID`
+
+## Validation
+
+On startup, the server validates that the bot has both `ManageChannels` and `ManageRoles` permissions in the configured guild. If any permission is missing, the server will exit with a descriptive error.
