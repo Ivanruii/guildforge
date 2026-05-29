@@ -1,66 +1,64 @@
 name: CI
 
 on:
-	push:
-		branches: [main, dev]
-	pull_request:
-		branches: [main, dev]
+  push:
+    branches: [main, dev]
+  pull_request:
+    branches: [main, dev]
 
 jobs:
-	test:
-		runs-on: ubuntu-latest
-		steps:
-			- uses: actions/checkout@v4
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
 
-			- name: Setup pnpm
-				uses: pnpm/action-setup@v4
-				with:
-					version: 10
+      - name: Setup pnpm
+        uses: pnpm/action-setup@v4
 
-			- name: Setup Node.js
-				uses: actions/setup-node@v4
-				with:
-					node-version-file: '.nvmrc'
-					cache: 'pnpm'
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version-file: '.nvmrc'
+          cache: 'pnpm'
 
-			- name: Install dependencies
-				run: pnpm install --frozen-lockfile
+      - name: Install dependencies
+        run: pnpm install --frozen-lockfile
 
-			- name: Run Biome
-				run: pnpm lint
+      - name: Run Biome
+        run: pnpm lint
 
-			- name: Type check
-				run: pnpm typecheck
+      - name: Type check
+        run: pnpm typecheck
 
-			- name: Run tests
-				run: pnpm test
+      - name: Run tests
+        run: pnpm test
 
-			- name: Build
-				run: pnpm build
+      - name: Build
+        run: pnpm build
 
-	changeset-check:
-		if: github.event_name == 'pull_request' && github.event.pull_request.base.ref != 'main'
-		runs-on: ubuntu-latest
-		steps:
-			- name: Checkout repository
-				uses: actions/checkout@v4
-				with:
-					fetch-depth: 0
+  changeset-check:
+    if: github.event_name == 'pull_request' && github.event.pull_request.base.ref != 'main'
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
 
-			- name: Check for changeset
-				run: |
-					BASE=${{ github.event.pull_request.base.sha }}
-					HEAD=${{ github.event.pull_request.head.sha }}
+      - name: Check for changeset
+        run: |
+          BASE=${{ github.event.pull_request.base.sha }}
+          HEAD=${{ github.event.pull_request.head.sha }}
 
-					PACKAGES_CHANGED=$(git diff --name-only "$BASE" "$HEAD" -- packages/ | head -1)
+          PACKAGES_CHANGED=$(git diff --name-only "$BASE" "$HEAD" -- packages/ | head -1)
 
-					if [ -n "$PACKAGES_CHANGED" ]; then
-						CHANGESET_ADDED=$(git diff --name-only "$BASE" "$HEAD" -- '.changeset/*.md' | head -1)
-						if [ -z "$CHANGESET_ADDED" ]; then
-							echo "::error::This PR modifies packages/ but has no changeset. Run 'pnpm changeset' to add one."
-							exit 1
-						fi
-						echo "Changeset found for package changes."
-					else
-						echo "No package changes detected, skipping changeset check."
-					fi
+          if [ -n "$PACKAGES_CHANGED" ]; then
+            CHANGESET_ADDED=$(git diff --name-only "$BASE" "$HEAD" -- '.changeset/*.md' | head -1)
+            if [ -z "$CHANGESET_ADDED" ]; then
+              echo "::error::This PR modifies packages/ but has no changeset. Run 'pnpm changeset' to add one."
+              exit 1
+            fi
+            echo "Changeset found for package changes."
+          else
+            echo "No package changes detected, skipping changeset check."
+          fi
