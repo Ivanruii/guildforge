@@ -13,6 +13,7 @@ import { deleteRole } from './tools/delete-role';
 import { listChannels } from './tools/list-channels';
 import { listRoles } from './tools/list-roles';
 import { ping } from './tools/ping';
+import { setChannelPermissions } from './tools/set-channel-permissions';
 
 const config = parseConfig(process.env);
 const discordService = createDiscordClientService(
@@ -111,6 +112,15 @@ server.registerTool(
 		inputSchema: assignRole.schema,
 	},
 	(args) => assignRole.execute(args, discordService),
+);
+
+server.registerTool(
+	setChannelPermissions.name,
+	{
+		description: setChannelPermissions.description,
+		inputSchema: setChannelPermissions.schema,
+	},
+	(args) => setChannelPermissions.execute(args, discordService),
 );
 
 async function main() {
