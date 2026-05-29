@@ -13,6 +13,7 @@ import { deleteRole } from './tools/delete-role';
 import { listChannels } from './tools/list-channels';
 import { listRoles } from './tools/list-roles';
 import { ping } from './tools/ping';
+import { setCategoryPermissions } from './tools/set-category-permissions';
 import { setChannelPermissions } from './tools/set-channel-permissions';
 
 const config = parseConfig(process.env);
@@ -121,6 +122,15 @@ server.registerTool(
 		inputSchema: setChannelPermissions.schema,
 	},
 	(args) => setChannelPermissions.execute(args, discordService),
+);
+
+server.registerTool(
+	setCategoryPermissions.name,
+	{
+		description: setCategoryPermissions.description,
+		inputSchema: setCategoryPermissions.schema,
+	},
+	(args) => setCategoryPermissions.execute(args, discordService),
 );
 
 async function main() {
