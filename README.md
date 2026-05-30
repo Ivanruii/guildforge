@@ -2,6 +2,8 @@
 
 A Model Context Protocol (MCP) server that lets AI assistants manage Discord channels, categories, roles, and permissions via stdio.
 
+https://github.com/user-attachments/assets/8cd7b582-87cf-43e7-a470-50f754d458b6
+
 ## Configure your AI client
 
 ### opencode
