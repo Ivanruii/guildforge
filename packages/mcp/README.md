@@ -196,7 +196,7 @@ discord.js Client
 Discord API
 ```
 
-Each tool follows the Lemoncode/quickmock pattern:
+Each tool follows the following pattern:
 - `index.ts` — Barrel export
 - `<tool>.tool.ts` — Metadata (name, description, schema, execute)
 - `<tool>.handler.ts` — Business logic
