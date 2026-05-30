@@ -50,7 +50,7 @@ A Model Context Protocol (MCP) server that lets AI assistants manage Discord cha
 }
 ```
 
-See the [full documentation](/docs/getting-started) for more clients (Copilot, Zed).
+See the [full documentation](https://guildforge.ivan-ruiz.es/docs/getting-started/) for more clients (Copilot, Zed).
 
 ## Features
 
@@ -72,6 +72,6 @@ Destructive actions (`delete_*`) require `confirm: true`.
 
 ## Resources
 
-- [Documentation](https://guildforge.ivan-ruiz.es/) — full setup guide
+- [Documentation](https://guildforge.ivan-ruiz.es/)
 - [npm package](https://www.npmjs.com/package/@guildforge/mcp)
 - [GitHub](https://github.com/Ivanruii/guildforge)
