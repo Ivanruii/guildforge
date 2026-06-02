@@ -96,8 +96,16 @@ Sets permission overwrites for a role on a specific channel. Parameters:
 
 Same as `set_channel_permissions` but for a category. The category must be of type `GuildCategory`.
 
-## Ping Tool
+## Server Info
 
-### `ping`
+### `get_guild_info`
 
-A simple health-check tool that returns `pong`. Useful for verifying the server is responsive.
+Returns basic information about the configured Discord server:
+
+- `id` — guild ID
+- `name` — server name
+- `memberCount` — approximate member count
+- `iconUrl` — server icon URL (or `null`)
+- `ownerId` — ID of the server owner
+- `premiumTier` — server boost level (0–3)
+- `preferredLocale` — primary language/locale
