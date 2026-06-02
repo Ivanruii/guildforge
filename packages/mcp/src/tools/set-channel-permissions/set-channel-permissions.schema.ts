@@ -7,12 +7,12 @@ export const setChannelPermissionsSchema = {
 		.array(z.string())
 		.optional()
 		.describe(
-			'Optional array of permission names to allow (e.g., SendMessages, ViewChannel)',
+			`Optional array of permission names to allow (e.g., SendMessages, ViewChannel). Use list_permission_flags to get the full list of valid permission names.`,
 		),
 	deny: z
 		.array(z.string())
 		.optional()
 		.describe(
-			'Optional array of permission names to deny (e.g., SendMessages, ViewChannel)',
+			`Optional array of permission names to deny (e.g., SendMessages, ViewChannel). Use list_permission_flags to get the full list of valid permission names.`,
 		),
 };

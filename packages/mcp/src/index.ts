@@ -2,21 +2,26 @@ import { McpServer } from '@modelcontextprotocol/sdk/server/mcp.js';
 import { StdioServerTransport } from '@modelcontextprotocol/sdk/server/stdio.js';
 import { createDiscordClientService } from './commons/discord-client.service';
 import { parseConfig } from './config';
+import { SYSTEM_INSTRUCTIONS } from './prompts/system-instructions';
 import { assignRole } from './tools/assign-role';
 import { createCategory } from './tools/create-category';
+import { createForumChannel } from './tools/create-forum-channel';
 import { createRole } from './tools/create-role';
 import { createTextChannel } from './tools/create-text-channel';
 import { createVoiceChannel } from './tools/create-voice-channel';
 import { deleteCategory } from './tools/delete-category';
 import { deleteChannel } from './tools/delete-channel';
 import { deleteRole } from './tools/delete-role';
+import { getGuildInfo } from './tools/get-guild-info';
 import { listChannels } from './tools/list-channels';
 import { listChannelsOrdered } from './tools/list-channels-ordered';
+import { listPermissionFlags } from './tools/list-permission-flags';
 import { listRoles } from './tools/list-roles';
-import { ping } from './tools/ping';
 import { reorderChannels } from './tools/reorder-channels';
 import { setCategoryPermissions } from './tools/set-category-permissions';
 import { setChannelPermissions } from './tools/set-channel-permissions';
+import { updateChannel } from './tools/update-channel';
+import { updateRole } from './tools/update-role';
 
 const config = parseConfig(process.env);
 const discordService = createDiscordClientService(
@@ -24,13 +29,20 @@ const discordService = createDiscordClientService(
 	config.GUILD_ID,
 );
 
-const server = new McpServer({
-	name: 'discord-manager-mcp',
-	version: '1.0.0',
-});
+const server = new McpServer(
+	{
+		name: 'discord-manager-mcp',
+		version: '1.0.0',
+	},
+	{
+		instructions: SYSTEM_INSTRUCTIONS,
+	},
+);
 
-server.registerTool(ping.name, { description: ping.description }, () =>
-	ping.execute(),
+server.registerTool(
+	getGuildInfo.name,
+	{ description: getGuildInfo.description },
+	() => getGuildInfo.execute(discordService),
 );
 
 server.registerTool(
@@ -58,12 +70,30 @@ server.registerTool(
 );
 
 server.registerTool(
+	createForumChannel.name,
+	{
+		description: createForumChannel.description,
+		inputSchema: createForumChannel.schema,
+	},
+	(args) => createForumChannel.execute(args, discordService),
+);
+
+server.registerTool(
 	deleteChannel.name,
 	{
 		description: deleteChannel.description,
 		inputSchema: deleteChannel.schema,
 	},
 	(args) => deleteChannel.execute(args, discordService),
+);
+
+server.registerTool(
+	updateChannel.name,
+	{
+		description: updateChannel.description,
+		inputSchema: updateChannel.schema,
+	},
+	(args) => updateChannel.execute(args, discordService),
 );
 
 server.registerTool(
@@ -109,6 +139,15 @@ server.registerTool(
 );
 
 server.registerTool(
+	updateRole.name,
+	{
+		description: updateRole.description,
+		inputSchema: updateRole.schema,
+	},
+	(args) => updateRole.execute(args, discordService),
+);
+
+server.registerTool(
 	assignRole.name,
 	{
 		description: assignRole.description,
@@ -139,6 +178,12 @@ server.registerTool(
 	listChannelsOrdered.name,
 	{ description: listChannelsOrdered.description },
 	() => listChannelsOrdered.execute(discordService),
+);
+
+server.registerTool(
+	listPermissionFlags.name,
+	{ description: listPermissionFlags.description },
+	() => listPermissionFlags.execute(),
 );
 
 server.registerTool(

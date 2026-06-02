@@ -6,6 +6,8 @@ export async function listRolesHandler(service: DiscordClientService) {
 	const roles = guild.roles.cache.map((role) => ({
 		id: role.id,
 		name: role.name,
+		color: role.hexColor,
+		position: role.position,
 	}));
 	return toolText(JSON.stringify(roles));
 }

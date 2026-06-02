@@ -7,9 +7,11 @@ describe('assignRoleHandler', () => {
 		const rolesAdd = vi.fn().mockResolvedValue(undefined);
 		const rolesRemove = vi.fn().mockResolvedValue(undefined);
 		const mockMember = {
+			displayName: 'UserName',
+			user: { username: 'username' },
 			roles: { add: rolesAdd, remove: rolesRemove },
 		};
-		const mockRole = { id: 'role-123' };
+		const mockRole = { id: 'role-123', name: 'Moderator' };
 		const mockGuild = {
 			members: { fetch: vi.fn().mockResolvedValue(mockMember) },
 			roles: { cache: { get: vi.fn().mockReturnValue(mockRole) } },
@@ -24,7 +26,14 @@ describe('assignRoleHandler', () => {
 		);
 		expect(rolesAdd).toHaveBeenCalledWith(mockRole);
 		expect(result.content[0].text).toBe(
-			JSON.stringify({ userId: 'user-456', roleId: 'role-123' }),
+			JSON.stringify({
+				userId: 'user-456',
+				roleId: 'role-123',
+				action: 'add',
+				memberDisplayName: 'UserName',
+				roleName: 'Moderator',
+				suggestion: "Role 'Moderator' assigned to 'UserName'.",
+			}),
 		);
 	});
 
@@ -32,9 +41,11 @@ describe('assignRoleHandler', () => {
 		const rolesAdd = vi.fn().mockResolvedValue(undefined);
 		const rolesRemove = vi.fn().mockResolvedValue(undefined);
 		const mockMember = {
+			displayName: 'UserName',
+			user: { username: 'username' },
 			roles: { add: rolesAdd, remove: rolesRemove },
 		};
-		const mockRole = { id: 'role-123' };
+		const mockRole = { id: 'role-123', name: 'Moderator' };
 		const mockGuild = {
 			members: { fetch: vi.fn().mockResolvedValue(mockMember) },
 			roles: { cache: { get: vi.fn().mockReturnValue(mockRole) } },
@@ -49,7 +60,14 @@ describe('assignRoleHandler', () => {
 		);
 		expect(rolesRemove).toHaveBeenCalledWith(mockRole);
 		expect(result.content[0].text).toBe(
-			JSON.stringify({ userId: 'user-456', roleId: 'role-123' }),
+			JSON.stringify({
+				userId: 'user-456',
+				roleId: 'role-123',
+				action: 'remove',
+				memberDisplayName: 'UserName',
+				roleName: 'Moderator',
+				suggestion: "Role 'Moderator' removed from 'UserName'.",
+			}),
 		);
 	});
 
