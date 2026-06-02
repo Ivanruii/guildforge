@@ -25,9 +25,16 @@ export async function assignRoleHandler(
 			await member.roles.remove(role);
 		}
 
-		return toolText(
-			JSON.stringify({ userId: args.userId, roleId: args.roleId }),
-		);
+		const response = {
+			userId: args.userId,
+			roleId: args.roleId,
+			action: args.action,
+			memberDisplayName:
+				member.displayName ?? member.user?.username ?? args.userId,
+			roleName: role.name,
+			suggestion: `Role '${role.name}' ${args.action === 'add' ? 'assigned to' : 'removed from'} '${member.displayName ?? member.user?.username ?? args.userId}'.`,
+		};
+		return toolText(JSON.stringify(response));
 	} catch (err) {
 		return toolError(`Error assigning role: ${String(err)}`);
 	}
