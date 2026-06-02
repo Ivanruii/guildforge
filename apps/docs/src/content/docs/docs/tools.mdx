@@ -44,6 +44,17 @@ Reorders channels and moves them between categories. Accepts a batch of operatio
 - `position` (number, required)
 - `categoryId` (string, optional)
 
+### `update_channel`
+
+Updates properties of an existing channel. Parameters:
+- `channelId` (string, required)
+- `name` (string, optional) — new channel name
+- `topic` (string, optional) — new topic (text/forum only)
+- `bitrate` (number, optional) — new bitrate in bps (voice only)
+- `userLimit` (number, optional) — new user limit, `0` = unlimited (voice only)
+- `categoryId` (string, optional) — new parent category ID
+- `position` (number, optional) — new position in the list
+
 ## Category Tools
 
 ### `create_category`
@@ -70,6 +81,15 @@ Creates a new role. Parameters:
 ### `delete_role`
 
 Deletes a role by ID. Requires `confirm: true`.
+
+### `update_role`
+
+Updates properties of an existing role. Parameters:
+- `roleId` (string, required)
+- `name` (string, optional) — new role name
+- `color` (string, optional) — new hex color (e.g. `#FF0000`)
+- `hoist` (boolean, optional) — display separately in member list
+- `mentionable` (boolean, optional) — allow @mentions
 
 ### `assign_role`
 
