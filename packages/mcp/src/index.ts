@@ -19,6 +19,8 @@ import { listRoles } from './tools/list-roles';
 import { reorderChannels } from './tools/reorder-channels';
 import { setCategoryPermissions } from './tools/set-category-permissions';
 import { setChannelPermissions } from './tools/set-channel-permissions';
+import { updateChannel } from './tools/update-channel';
+import { updateRole } from './tools/update-role';
 
 const config = parseConfig(process.env);
 const discordService = createDiscordClientService(
@@ -80,6 +82,15 @@ server.registerTool(
 );
 
 server.registerTool(
+	updateChannel.name,
+	{
+		description: updateChannel.description,
+		inputSchema: updateChannel.schema,
+	},
+	(args) => updateChannel.execute(args, discordService),
+);
+
+server.registerTool(
 	createCategory.name,
 	{
 		description: createCategory.description,
@@ -119,6 +130,15 @@ server.registerTool(
 		inputSchema: deleteRole.schema,
 	},
 	(args) => deleteRole.execute(args, discordService),
+);
+
+server.registerTool(
+	updateRole.name,
+	{
+		description: updateRole.description,
+		inputSchema: updateRole.schema,
+	},
+	(args) => updateRole.execute(args, discordService),
 );
 
 server.registerTool(
