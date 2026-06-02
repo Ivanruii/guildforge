@@ -2,6 +2,7 @@ import { McpServer } from '@modelcontextprotocol/sdk/server/mcp.js';
 import { StdioServerTransport } from '@modelcontextprotocol/sdk/server/stdio.js';
 import { createDiscordClientService } from './commons/discord-client.service';
 import { parseConfig } from './config';
+import { SYSTEM_INSTRUCTIONS } from './prompts/system-instructions';
 import { assignRole } from './tools/assign-role';
 import { createCategory } from './tools/create-category';
 import { createForumChannel } from './tools/create-forum-channel';
@@ -28,10 +29,15 @@ const discordService = createDiscordClientService(
 	config.GUILD_ID,
 );
 
-const server = new McpServer({
-	name: 'discord-manager-mcp',
-	version: '1.0.0',
-});
+const server = new McpServer(
+	{
+		name: 'discord-manager-mcp',
+		version: '1.0.0',
+	},
+	{
+		instructions: SYSTEM_INSTRUCTIONS,
+	},
+);
 
 server.registerTool(
 	getGuildInfo.name,
