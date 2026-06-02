@@ -13,6 +13,7 @@ import { deleteChannel } from './tools/delete-channel';
 import { deleteRole } from './tools/delete-role';
 import { listChannels } from './tools/list-channels';
 import { listChannelsOrdered } from './tools/list-channels-ordered';
+import { listPermissionFlags } from './tools/list-permission-flags';
 import { listRoles } from './tools/list-roles';
 import { ping } from './tools/ping';
 import { reorderChannels } from './tools/reorder-channels';
@@ -149,6 +150,12 @@ server.registerTool(
 	listChannelsOrdered.name,
 	{ description: listChannelsOrdered.description },
 	() => listChannelsOrdered.execute(discordService),
+);
+
+server.registerTool(
+	listPermissionFlags.name,
+	{ description: listPermissionFlags.description },
+	() => listPermissionFlags.execute(),
 );
 
 server.registerTool(
