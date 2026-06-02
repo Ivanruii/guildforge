@@ -11,11 +11,11 @@ import { createVoiceChannel } from './tools/create-voice-channel';
 import { deleteCategory } from './tools/delete-category';
 import { deleteChannel } from './tools/delete-channel';
 import { deleteRole } from './tools/delete-role';
+import { getGuildInfo } from './tools/get-guild-info';
 import { listChannels } from './tools/list-channels';
 import { listChannelsOrdered } from './tools/list-channels-ordered';
 import { listPermissionFlags } from './tools/list-permission-flags';
 import { listRoles } from './tools/list-roles';
-import { ping } from './tools/ping';
 import { reorderChannels } from './tools/reorder-channels';
 import { setCategoryPermissions } from './tools/set-category-permissions';
 import { setChannelPermissions } from './tools/set-channel-permissions';
@@ -31,8 +31,10 @@ const server = new McpServer({
 	version: '1.0.0',
 });
 
-server.registerTool(ping.name, { description: ping.description }, () =>
-	ping.execute(),
+server.registerTool(
+	getGuildInfo.name,
+	{ description: getGuildInfo.description },
+	() => getGuildInfo.execute(discordService),
 );
 
 server.registerTool(
