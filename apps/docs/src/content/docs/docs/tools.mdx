@@ -41,8 +41,8 @@ Deletes a channel by ID. Requires `confirm: true`.
 
 Reorders channels and moves them between categories. Accepts a batch of operations:
 - `channelId` (string, required)
-- `newPosition` (number, required)
-- `newCategoryId` (string, optional)
+- `position` (number, required)
+- `categoryId` (string, optional)
 
 ## Category Tools
 
@@ -82,10 +82,9 @@ Assigns or removes a role from a user. Parameters:
 
 ### `set_channel_permissions`
 
-Sets permission overwrites for a role or user on a specific channel. Parameters:
+Sets permission overwrites for a role on a specific channel. Parameters:
 - `channelId` (string, required)
-- `targetId` (string, required) — role or user ID
-- `targetType` (enum: `role` | `user`, required)
+- `roleId` (string, required)
 - `allow` (string[], optional) — permission names to allow
 - `deny` (string[], optional) — permission names to deny
 
