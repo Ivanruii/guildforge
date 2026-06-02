@@ -4,6 +4,7 @@ import { createDiscordClientService } from './commons/discord-client.service';
 import { parseConfig } from './config';
 import { assignRole } from './tools/assign-role';
 import { createCategory } from './tools/create-category';
+import { createForumChannel } from './tools/create-forum-channel';
 import { createRole } from './tools/create-role';
 import { createTextChannel } from './tools/create-text-channel';
 import { createVoiceChannel } from './tools/create-voice-channel';
@@ -55,6 +56,15 @@ server.registerTool(
 		inputSchema: createVoiceChannel.schema,
 	},
 	(args) => createVoiceChannel.execute(args, discordService),
+);
+
+server.registerTool(
+	createForumChannel.name,
+	{
+		description: createForumChannel.description,
+		inputSchema: createForumChannel.schema,
+	},
+	(args) => createForumChannel.execute(args, discordService),
 );
 
 server.registerTool(
