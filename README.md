@@ -58,7 +58,7 @@ See the [full documentation](https://guildforge.ivan-ruiz.es/docs/getting-starte
 
 | Category | Tools |
 |----------|-------|
-| **Channels** | `list_channels`, `create_text_channel`, `create_voice_channel`, `delete_channel` |
+| **Channels** | `list_channels`, `list_channels_ordered`, `create_text_channel`, `create_voice_channel`, `create_forum_channel`, `delete_channel`, `reorder_channels` |
 | **Categories** | `create_category`, `delete_category` |
 | **Roles** | `list_roles`, `create_role`, `delete_role`, `assign_role` |
 | **Permissions** | `set_channel_permissions`, `set_category_permissions` |
