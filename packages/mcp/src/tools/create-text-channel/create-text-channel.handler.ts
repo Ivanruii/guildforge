@@ -13,7 +13,15 @@ export async function createTextChannelHandler(
 			type: ChannelType.GuildText,
 			parent: args.categoryId ?? undefined,
 		});
-		return toolText(JSON.stringify({ id: channel.id, name: channel.name }));
+		const response = {
+			id: channel.id,
+			name: channel.name,
+			type: String(channel.type),
+			parentId: channel.parentId ?? null,
+			url: `https://discord.com/channels/${guild.id}/${channel.id}`,
+			suggestion: `Channel created successfully. You can now set permissions with set_channel_permissions using channelId: "${channel.id}".`,
+		};
+		return toolText(JSON.stringify(response));
 	} catch (err) {
 		return toolError(`Error creating text channel: ${String(err)}`);
 	}

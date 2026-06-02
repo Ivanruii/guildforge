@@ -13,9 +13,15 @@ vi.mock('discord.js', async () => {
 
 describe('createTextChannelHandler', () => {
 	it('should create a text channel', async () => {
-		const mockChannel = { id: '123', name: 'test-channel' };
+		const mockChannel = {
+			id: '123',
+			name: 'test-channel',
+			type: 0,
+			parentId: null,
+		};
 		const createMock = vi.fn().mockResolvedValue(mockChannel);
 		const mockGuild = {
+			id: 'guild-789',
 			channels: { create: createMock },
 		};
 		const service = {
@@ -32,7 +38,15 @@ describe('createTextChannelHandler', () => {
 			parent: undefined,
 		});
 		expect(result.content[0].text).toBe(
-			JSON.stringify({ id: '123', name: 'test-channel' }),
+			JSON.stringify({
+				id: '123',
+				name: 'test-channel',
+				type: '0',
+				parentId: null,
+				url: 'https://discord.com/channels/guild-789/123',
+				suggestion:
+					'Channel created successfully. You can now set permissions with set_channel_permissions using channelId: "123".',
+			}),
 		);
 	});
 });
