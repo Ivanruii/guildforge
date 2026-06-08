@@ -37,7 +37,7 @@
 	"license": "MIT",
 	"repository": {
 		"type": "git",
-		"url": "https://github.com/guildforge/guildforge.git",
+		"url": "https://github.com/Ivanruii/guildforge.git",
 		"directory": "packages/mcp"
 	},
 	"dependencies": {
